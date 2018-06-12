@@ -1,0 +1,7 @@
+<design:component >
+    <design:attribute label="Button Label" name="buttonLabel" 
+                      description="Enter the label to be displayed at the button." default="Referal a member" />
+    
+    <design:attribute label="Community url" name="url" 
+                      description="Enter the url of the community." required="true"/>
+</design:component>

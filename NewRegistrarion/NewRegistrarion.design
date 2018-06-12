@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="createUser" label="Create community user?" 
+    				  description="If true, create the Community User together with the Member. If false, it only creates the Member." />
+</design:component>
