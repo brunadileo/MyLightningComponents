@@ -1,44 +1,54 @@
 <aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" 
                 access="global" controller="PublicMemberContentController">
-    <!-- DESIGN ATTRIBUTES -->
+
     <!-- DESIGN ATTRIBUTES -->
     <aura:attribute name="createMember" type="Boolean" default="true"/>
-    <aura:attribute name="sendEmail" type="String"/>  
+    <aura:attribute name="sendEmail" type="String" default="SendGrid"/>  
     <aura:attribute name="url" type="String"/>
     <aura:attribute name="buttonLabel" type="String"/>
+    <aura:attribute name="emailTemplate" type="String" />
+    <aura:attribute name="enableMessage" type="Boolean" />
     
     <!--FORM ATTRIBUTES -->
-    <aura:attribute name="emails" type="String" default="brunagdileo@gmail.com"/>
-    <aura:attribute name="referrerEmail" type="String" 
-                    />
+    <aura:attribute name="emails" type="String" />
+    <aura:attribute name="referrerEmail" type="String" />
+    <aura:attribute name="emailMessage" type="String" />
     
     <!--BACKEND ATTRIBUTES -->
     <aura:attribute name="memberMap" type="Map" />
     <aura:attribute name="hideSuccessMsg" type="Boolean" default="true"/>
     
     <!-- EVENTS --> 
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    
+       
     
     <!-- BODY -->
     <aura:if isTrue="{!v.hideSuccessMsg}">
         <lightning:layoutItem padding="around-small" size="12">
             
             <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                <lightning:input label="Referrer e-mail" name="referrerEmail" 
+                <lightning:input label="Referrer e-mail" name="referrerEmail" placeholder="Enter your e-mail"
                                  value="{!v.referrerEmail}" class="registration-input"/>
             </lightning:layoutItem>
+            
             <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
                 <lightning:textarea label="Referred e-mails" name="emails" 
                                     value="{!v.emails}" class="registration-input"
                                     placeholder="Enter as many emails as you want, separated by coma (,)"/>
             </lightning:layoutItem>
             
-            <br />
+            <aura:if isTrue="{!v.enableMessage}">
+            <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
+                <lightning:textarea label="Personalized message for your friends" name="emailMessage" 
+                                    value="{!v.emailMessage}" class="registration-input"
+                                    placeholder="Enter as many emails as you want, separated by coma (,)"/>
+            </lightning:layoutItem>
+            </aura:if>
             
+            <br />
+            <lightning:layout horizontalAlign="center">
             <lightning:button name="modalButton" variant="brand" label="{!v.buttonLabel}" 
                               value="test" onclick="{!c.sendMailScript}" />
-            
+            </lightning:layout>
         </lightning:layoutItem>
         <aura:set attribute="else">
             <div class="slds-align_absolute-center registration-successful">
@@ -47,7 +57,7 @@
                         <lightning:icon iconName="action:approval" size="large" alternativeText="Indicates approval"/>
                     </div>
                     <div class="slds-col slds-grid_vertical-align-center">
-                        <div class="registration-successful">Thanks for refering more members! </div>
+                        <div class="registration-successful">Thanks for referring more members! </div>
                         
                         <div class="check-email">If you weren't a member before, please check your email to complete your registration. </div>
                     </div>    

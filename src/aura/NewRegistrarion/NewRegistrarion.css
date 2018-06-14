@@ -6,9 +6,6 @@
     border-radius: 2px;
     
 }
-.THIS .inputContainer .registration-input{
-    background-color: #e0e0e0;
-}
 
 .THIS .registration-input label{
     font-weight: bold;
@@ -26,7 +23,8 @@
     border: 0 solid transparent;
     -webkit-appearance: none;
     min-height: initial;
-    background-color: #e0e0e0;
+    /*background-color: #000;*/
+    background-color: inherit;
 }
 
 
@@ -41,36 +39,6 @@
 
 .THIS .registration-input .slds-checkbox--faux{
     border-color: #ccc;
-}
-
-.THIS .registration-btn{
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    color: #ffffff;
-    cursor: pointer;
-    background-color: rgb(31, 151, 255);
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 10px 12px;
-    font-size: 16px;
-    font-family: Arial;
-    font-weight: 700;
-    line-height: 1.42857143;
-    border-radius: 2px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    outline: none;
-}
-
-.THIS .registration-btn:hover{
-    background-color: #007eeb;
 }
 
 .THIS .modal-close-btn{
@@ -88,12 +56,4 @@
 }
 .THIS .check-email{
     font-size: 0.9rem;
-}
-
-.THIS{
-    background-color:#b7b7b7;
-}
-
-.THIS.newbg{
-    background-color:#ffffff;
 }

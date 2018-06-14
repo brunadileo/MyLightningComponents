@@ -6,11 +6,23 @@
     border-radius: 2px;
 }
 
+.THIS .registration-input label{
+    font-weight: bold;
+}
+
 .THIS .registration-input .slds-form-element__control{
-    width: 70%;
+    width: 98%;
 }
 
 .THIS .registration-input .slds-input{
+    margin-left: 10px;
+    margin-top: 3px;
+    border: 0 solid transparent;    
+    -webkit-appearance: none;
+    min-height: initial;
+}
+
+.THIS .registration-input .slds-textarea{
     margin-left: 10px;
     margin-top: 3px;
     border: 0 solid transparent;    

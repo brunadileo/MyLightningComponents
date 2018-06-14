@@ -18,11 +18,11 @@ return;
 }*/
     
     @AuraEnabled
-    public static Map<String,String> getNames(Id programId, Id memberId){
+    public static Map<String,String> getNames(Id memberId,Id programId){
         Map<String,String> lista = new Map<String,String>();
         FieloPLT__Program__c p = [SELECT Name FROM FieloPLT__Program__c WHERE Id =:programId];
         lista.put('program',p.Name);
-        FieloPLT__Member__c m = [SELECT Name FROM FieloPLT__Member__c WHERE Id =:memberId];
+        FieloPLT__Member__c m = [SELECT Name,FieloPLT__Program__c, FieloPLT__Program__r.Name FROM FieloPLT__Member__c WHERE Id =:memberId];
         lista.put('member',m.Name);
         return lista;
     }
@@ -68,8 +68,15 @@ return;
             member.FieloPLT__Type__c = 'Individual Account';
             insert member;
 
-            FieloPLT__Event__c e = new FieloPLT__Event__c(FieloPLT__Member__c=referalId,
+            FieloPLT__Event__c e1 = new FieloPLT__Event__c(FieloPLT__Member__c= referalId,
                                                           FieloPLT__Type__c = 'Referal');
+            
+            FieloPLT__Event__c e2 = new FieloPLT__Event__c(FieloPLT__Member__c= member.Id,
+                                                          FieloPLT__Type__c = 'Registration');
+            
+            List<FieloPLT__Event__c> e = new List<FieloPLT__Event__c>();
+            e.add(e1);
+            e.add(e2);
             insert e;
             
             return null;

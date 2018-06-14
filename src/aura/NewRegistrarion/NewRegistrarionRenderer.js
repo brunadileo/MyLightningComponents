@@ -1,43 +1,21 @@
 ({
-	afterRender : function(cmp,helper){
+    afterRender : function(cmp,helper){
         this.superAfterRender();
-<<<<<<< HEAD
-
-        var bgcolor = cmp.get("v.bgcolor");
-        cmp.find('body').getElements()[0].style.backgroundColor = bgcolor;
+        //worked
+        /*var bgcolor = cmp.get("v.bgcolor");
+        cmp.find('body').getElements()[0].style.backgroundColor = bgcolor;*/
         
-        /*var inputbgcolor = cmp.get("v.inputbgcolor");
-        cmp.find('input2').style.backgroundColor = inputbgcolor;*/
-
-        
-        /*document.styleSheets[0].insertRule('input{ background-color: #000;}');
-        document.styleSheets[0].insertRule('.testClass{ background-color: #000;}');
-        $A.util.addClass(cmp.find('input2'),'testClass');*/
-        
-        //document.styleSheets[0].addRule('.inputContainer','background-color: #ccc;',1);
-        
-        //document.getElementsByTagName("INPUT"); //console.log(inputs);
-        
-       	
-        //document.styleSheets[0].insertRule('.testClass{ background-color: #ccc;}');
-        /*for(var i=0;inputs.length<i;i++){
-            $A.util.addClass(document.getElementsByTagName("INPUT")[i],'testClass');
-            //console.log(document.getElementsByTagName("INPUT")[i]);
+        //worked
+        /*document.styleSheets[0].addRule('.cHeader','background-color: pink;',1); 
+        document.styleSheets[0].addRule('.cCenterPanel','background-color: blue;',1);      
+        document.styleSheets[0].addRule('.inputContainer','background-color: #ccc;',1);
+        document.styleSheets[0].addRule('.registration-input','background-color: red;',1);
+        for(var i=0;inputs.length<i;i++){
+            
+            //document.styleSheets[0].addRule('.slds-input,'background-color: #000 !important;',1);
         }*/
+                
         
-        //$A.util.addClass(input,'testClass');
-		var i = cmp.find('input2');
-        //i.getElementsByTagName("INPUT");
-        console.log(i[0]);
-        debugger;
-        
-=======
-        //var elements = document.getElementsByClassName("inputContainer");
-        console.log("elements.length: " + elements.length);
-        for (var i=0; i<elements.length; i++) {
-            console.log(elements[i].innerHTML);
-        }
->>>>>>> 09b7f88acdc16287bc0d6408fd9469154d5ccf2e
     }
     
 })

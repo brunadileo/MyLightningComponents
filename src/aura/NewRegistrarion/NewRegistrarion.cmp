@@ -1,10 +1,11 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" 
                 controller="NewRegistrationController" access="global">
 
-    <!-- DESIGN SETUP-->
-    <aura:attribute name="bgcolor" type="String" default="#ddd"/>
+    <!-- DESIGN CSS-->
+    <aura:attribute name="bgcolor" type="String" default=""/>
     <aura:attribute name="inputbgcolor" type="String" default="#000"/>
-
+	
+    <!-- FORM ATTRIBUTES -->
     <aura:attribute name="firstname" type="String" default=""/>
     <aura:attribute name="lastname" type="String" default=""/>
     <aura:attribute name="email" type="String" default=""/>
@@ -13,24 +14,27 @@
     <aura:attribute name="member" type="Map" default="{'Id':'',
                                                       'Name':''}" />
     
-    
+    <!-- DESIGN RESOURCES and PAGE VARIABLES -->
     <aura:attribute name="hideSuccessMsg" type="Boolean" default="true"/>
     <aura:attribute name="createUser" type="Boolean" default="false"/>
     
+    <!-- INITIALIZATION EVENTS -->
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:handler name="render" value="{!this}" action="{!c.afterRender}"/>
 
-
+<!-- BODY -->
     <aura:if isTrue="{!v.hideSuccessMsg}">
         <div aura:id="body">
         <lightning:layout multipleRows="true">
             <lightning:layoutItem padding="around-small" size="12">                        
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input aura:id="input2" name="FirstName" value="{!v.firstname}" label="First Name" placeholder="First name" variant="label-hidden" class="registration-input" />
+                    <lightning:input aura:id="input2" name="FirstName" value="{!v.firstname}" label="First Name" 
+                                     placeholder="First name" variant="label-hidden" class="registration-input"/>
                 </lightning:layoutItem>
               
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input aura:id="input2" name="lastName"  value="{!v.lastname}" label="Last Name" placeholder="Last name" variant="label-hidden" class="registration-input" />
+                    <lightning:input aura:id="input2" name="lastName"  value="{!v.lastname}" label="Last Name" placeholder="Last name" 
+                                     variant="label-hidden" class="registration-input testClass" />
                 </lightning:layoutItem>
                 
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
@@ -39,12 +43,12 @@
                 
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
                     <lightning:input aura:id="input2" name="Program" value="{!v.program.Name}" 
-                                     label="Program" readonly="true"/>
+                                     label="{!'Program:'+v.program.Name}" placeholder="Program" variant="label-hidden" class="registration-input" readonly="true"/>
                 </lightning:layoutItem>
                 
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
                     <lightning:input aura:id="input2" name="referalMember" value="{!v.member.Name}" 
-                                     label="Referral Member" readonly="true"/>            
+                                     label="{!'Referral Member:' + v.member.Name}" placeholder="Referral Member" variant="label-hidden" class="registration-input" readonly="true"/>            
                 </lightning:layoutItem>
                 
                 
@@ -53,6 +57,7 @@
             </lightning:layoutItem>
         </lightning:layout>
         </div>
+        
         <aura:set attribute="else">
             <div class="slds-align_absolute-center registration-successful">
                 <div class="slds-grid slds-gutters slds-grid_vertical-align-center">

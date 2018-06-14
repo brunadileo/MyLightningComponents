@@ -1,5 +1,5 @@
 ({
-    doInit: function(component, event, helper) {
+    doInit: function(cmp, event, helper) {
         
         /*var inputbgcolor = component.get("v.inputbgcolor");
         var lalala = component.find("lalala");
@@ -22,21 +22,21 @@
             for(var i=0; i<=length; i++){  
                 var temp = listURL[i].split('=');
                 if(temp[0] == 'member'){
-                    component.set("v.member.Id",temp[1]);
-                    console.log('referal member: '+component.get("v.member.Id"));
+                    cmp.set("v.member.Id",temp[1]);
+                    console.log('referal member: '+cmp.get("v.member.Id"));
                 }else if(temp[0] == 'prog'){
-                    component.set("v.program.Id",temp[1]);
-                    console.log('program: '+component.get("v.program.Id"));
+                    cmp.set("v.program.Id",temp[1]);
+                    console.log('program: '+cmp.get("v.program.Id"));
                     break;
                 }            
             }
         }
 
-        var action = component.get("c.getNames");   
+        var action = cmp.get("c.getNames");   
 
         action.setParams({ 
-            programId : component.get("v.program.Id"),
-            memberId : component.get("v.member.Id")
+            programId : cmp.get("v.program.Id"),
+            memberId : cmp.get("v.member.Id")
         });
         
         action.setCallback(this, function(response) {
@@ -44,8 +44,8 @@
             if (state === "SUCCESS") {
                 var obj = response.getReturnValue();
                 console.log(obj);
-                component.set("v.program.Name",obj.program);
-                component.set("v.member.Name",obj.member);
+                cmp.set("v.program.Name",obj.program);
+                cmp.set("v.member.Name",obj.member);
             }else{
                 console.log('ERROR');
             }

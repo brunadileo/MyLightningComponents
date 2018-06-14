@@ -3,14 +3,21 @@
                       description="Create referrer member if it doesn't exist. The default value is true. 
                                    If it's false, it will only search for the member and return an error if it isn't found." 
                       default="true" />
-
+    
+    <design:attribute label="Enable personalized email message?" name="enableMessage" 
+                      description="Enable referrer member write personalized message to the referred friends"/>
+    
     <design:attribute label="Email tool" name="sendEmail" 
                       description="Choose the preferred e-mail tool" datasource="SendGrid,Salesforce"/>
     
     <design:attribute label="Community url" name="url" 
-                      description="Enter the url of the community."/>
+                      description="Enter the url of the community." 
+                      datasource="apex://customCommunitiesPicklist"/>
     
     <design:attribute label="Button Label" name="buttonLabel" 
                       description="Enter the label to be displayed at the button." default="Send invitation" />
+    
+    <design:attribute name="emailTemplate" datasource="apex://customTemplatesPicklist"/> 
+    
     
 </design:component>

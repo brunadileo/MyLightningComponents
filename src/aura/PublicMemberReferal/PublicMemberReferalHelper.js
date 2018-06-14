@@ -1,11 +1,13 @@
 ({
     createLink: function(cmp, event, helper,memberMap){
         var sendEmail = cmp.get("v.sendEmail");
+        var emailMessage = cmp.get("v.emailMessage");
         var url = cmp.get("v.url");
         var link = url+'registration?member='+memberMap.Id+'&prog='+memberMap.FieloPLT__Program__c;
         var p = {"program":memberMap.FieloPLT__Program__r.Name,
                  "link": link,
-                 "memberName":memberMap.Name};    
+                 "memberName":memberMap.Name,
+                 "emailMessage":emailMessage};    
         console.log(p);
         if(sendEmail == 'Salesforce'){
             console.log('Sent by Salesforce');
@@ -19,16 +21,20 @@
     sendSendgridMail: function(cmp, event, helper,p) {
         var emails = cmp.get("v.emails");
         var memberMap = cmp.get("v.memberMap");
+        var emailTemplate = cmp.get("v.emailTemplate");
+        console.log('emailTemplate:' + emailTemplate);
         
         var action = cmp.get("c.sgSendMail");
         
         action.setParams({
             emails: emails,
-            p:p
+            p:p,
+            emailTemplate:emailTemplate
         });
         
         action.setCallback(this, function(response) {
             var state = response.getState();
+            console.log('state:' +state);   
             if (state === "SUCCESS") {    
                 console.log(response.getReturnValue());              
                 cmp.set("v.hideSuccessMsg", false);
