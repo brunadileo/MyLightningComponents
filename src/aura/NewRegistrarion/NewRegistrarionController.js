@@ -1,6 +1,17 @@
 ({
     doInit: function(component, event, helper) {
         
+        /*var inputbgcolor = component.get("v.inputbgcolor");
+        var lalala = component.find("lalala");
+        lalala.style.backgroundColor = inputbgcolor;
+
+        var elements = document.getElementsByClassName("inputContainer");
+        console.log("elements.length: " + elements.length);
+        for (var i=0; i<elements.length; i++) {
+            console.log(elements[i].innerHTML);
+        }*/
+        
+
         var url = decodeURIComponent(window.location.search.substring(1));
         console.log(url);
         
@@ -20,12 +31,13 @@
                 }            
             }
         }
-        console.log('test');
+
         var action = component.get("c.getNames");   
 
         action.setParams({ 
             programId : component.get("v.program.Id"),
-            memberId : component.get("v.member.Id")});
+            memberId : component.get("v.member.Id")
+        });
         
         action.setCallback(this, function(response) {
             var state = response.getState();

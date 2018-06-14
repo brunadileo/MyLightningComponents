@@ -1,0 +1,66 @@
+<aura:component controller="modalController">
+    
+    <ltng:require scripts="{!$Resource.Clipboard}" 
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="completeURL" type="String"/>
+    <aura:attribute name="shortURL" type="String"/>
+    <aura:attribute name="memberMap" type="Map" />
+    <aura:attribute name="emailTemplate" type="String"/>
+    <aura:attribute name="sendEmail" type="String"/>  
+    
+    <aura:attribute name="device" type="String" default="{!$Browser.formFactor}"/>
+    <aura:attribute name="clickedCopy" type="Boolean" default="false" />
+    
+    <aura:attribute name="showFB" type="Boolean" />
+    <aura:attribute name="showTW" type="Boolean" />
+    <aura:attribute name="showEmail" type="Boolean" />
+    <aura:attribute name="showCopy" type="Boolean" default="true"/>
+    <aura:attribute name="showWP" type="Boolean" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:layout horizontalAlign="space">
+        <aura:if isTrue="{!v.showCopy}">
+            <lightning:layoutItem padding="around-small">        
+                <img width="50" height="50" src="{!$Resource.CopyIcon}" onclick="{!c.clickCopyButton}"/>
+                
+            </lightning:layoutItem>
+        </aura:if>
+        <aura:if isTrue="{!v.showWP}">
+            <lightning:layoutItem padding="around-small">
+                <a href="">
+                    <img width="50" height="50" src="{!$Resource.Whatsapp}" onclick="{!c.clickWPButton}"/></a>
+            </lightning:layoutItem> 
+        </aura:if>
+        <aura:if isTrue="{!v.showEmail}">
+            <lightning:layoutItem padding="around-small">
+                <a href="">
+                    <img width="50" height="50" src="{!$Resource.GmailIcon}" onclick="{!c.clickEmailButton}"/></a>
+                <lightning:overlayLibrary aura:id="modal"/> 
+            </lightning:layoutItem> 
+        </aura:if>
+        <aura:if isTrue="{!v.showFB}">
+            <lightning:layoutItem padding="around-small">
+                <a href=""><img aura:id="facebook" width="50" height="50" src="{!$Resource.Facebook}"
+                                onclick="{!c.clickFBButton}"/></a>            
+            </lightning:layoutItem> 
+        </aura:if>
+        <aura:if isTrue="{!v.showTW}">
+            <lightning:layoutItem padding="around-small">
+                <a href=""><img aura:id="facebook" width="50" height="50" src="{!$Resource.TwitterIcon}"
+                                onclick="{!c.clickTwButton}"/></a>            
+            </lightning:layoutItem> 
+        </aura:if>
+    </lightning:layout>
+    <lightning:layout >
+        <aura:if isTrue="{!and(equals(v.device,'PHONE'),equals(v.clickedCopy,true))}"> 
+            <lightning:input name="completeURL" label="URL" value="{!v.completeURL}" onfocus="{!c.clickCopyMobile}"/>       
+        </aura:if>
+    </lightning:layout>
+    <textarea ID="holdtext" style="width: 0px; height: 0px; opacity: 0;">
+        {!v.completeURL}
+    </textarea>
+    <br /><br />
+</aura:component>

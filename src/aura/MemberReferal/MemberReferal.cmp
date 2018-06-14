@@ -1,13 +1,29 @@
-<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" 
-                access="global" >
+<aura:component access="global" controller="modalController" >
+    <!--DESIGN RESOURCES-->
     
     <aura:attribute name="url" type="String"/>
     <aura:attribute name="buttonLabel" type="String" />
+    <aura:attribute name="CopyToClipboard" type="Boolean"/>
+    <aura:attribute name="memberMap" type="Map" />
+    <aura:attribute name="emailTemplate" type="String"/>
+ 	<aura:attribute name="sendEmail" type="String" default="SendGrid"/>  
     
+    <aura:attribute name="showFB" type="Boolean" />
+    <aura:attribute name="showTW" type="Boolean" />
+    <aura:attribute name="showEmail" type="Boolean" />
+    <aura:attribute name="showCopy" type="Boolean" default="true"/>
+    <aura:attribute name="showWP" type="Boolean" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   
     <div class="slds-grid slds-grid_align-end">
-        <lightning:button name="modal" variant="brand" label="{!v.buttonLabel}" onclick="{!c.handleShowModal}" />
+        <lightning:button name="modal" variant="brand" class="button" label="{!v.buttonLabel}" onclick="{!c.handleShowModal}" />
     </div>
-    
-    <lightning:overlayLibrary aura:id="modal"/>    
-    
+    <aura:if isTrue="{!v.CopyToClipboard}">
+        <lightning:overlayLibrary aura:id="modalCopy"/> 
+        
+        <aura:set attribute="else">
+            <lightning:overlayLibrary aura:id="modal"/>  
+        </aura:set>
+    </aura:if>
 </aura:component>
