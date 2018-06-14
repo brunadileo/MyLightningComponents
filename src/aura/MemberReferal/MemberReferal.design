@@ -2,6 +2,18 @@
     <design:attribute label="Button Label" name="buttonLabel" 
                       description="Enter the label to be displayed at the button." default="Referal a member" />
     
+    <design:attribute label="Email tool" name="sendEmail" 
+                      description="Choose the preferred e-mail tool" datasource="SendGrid,Salesforce"/>
+    
     <design:attribute label="Community url" name="url" 
-                      description="Enter the url of the community." required="true"/>
+                      description="Enter the url of the community." datasource="apex://customCommunitiesPicklist"/>
+  
+    <design:attribute name="emailTemplate" datasource="apex://customTemplatesPicklist"/> 
+    <design:attribute name="CopyToClipboard" label="Enable Copy to Clipboard" />
+    
+    <design:attribute name="showFB" label="Facebook" />
+    <design:attribute name="showEmail" label="Email" />
+    <design:attribute name="showTW" label="Twitter" />
+    <design:attribute name="showWP" label="Whatsapp" />
+
 </design:component>

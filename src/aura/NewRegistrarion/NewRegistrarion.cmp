@@ -1,6 +1,10 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" 
-                controller="NewRegistrationController" access="global">     
-    
+                controller="NewRegistrationController" access="global">
+
+    <!-- DESIGN SETUP-->
+    <aura:attribute name="bgcolor" type="String" default="#ddd"/>
+    <aura:attribute name="inputbgcolor" type="String" default="#000"/>
+
     <aura:attribute name="firstname" type="String" default=""/>
     <aura:attribute name="lastname" type="String" default=""/>
     <aura:attribute name="email" type="String" default=""/>
@@ -14,30 +18,33 @@
     <aura:attribute name="createUser" type="Boolean" default="false"/>
     
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
-    
+    <aura:handler name="render" value="{!this}" action="{!c.afterRender}"/>
+
+
     <aura:if isTrue="{!v.hideSuccessMsg}">
+        <div aura:id="body">
         <lightning:layout multipleRows="true">
-            <lightning:layoutItem padding="around-small" size="12">                            
+            <lightning:layoutItem padding="around-small" size="12">                        
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input name="FirstName" value="{!v.firstname}" label="First Name" placeholder="First name" variant="label-hidden" class="registration-input"/>
+                    <lightning:input aura:id="input2" name="FirstName" value="{!v.firstname}" label="First Name" placeholder="First name" variant="label-hidden" class="registration-input" />
+                </lightning:layoutItem>
+              
+                <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
+                    <lightning:input aura:id="input2" name="lastName"  value="{!v.lastname}" label="Last Name" placeholder="Last name" variant="label-hidden" class="registration-input" />
                 </lightning:layoutItem>
                 
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input name="lastName"  value="{!v.lastname}" label="Last Name" placeholder="Last name" variant="label-hidden" class="registration-input"/>
+                    <lightning:input aura:id="input2" name="Email" value="{!v.email}" label="E-mail" placeholder="E-mail" variant="label-hidden" class="registration-input" />
                 </lightning:layoutItem>
                 
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input name="Email" value="{!v.email}" label="E-mail" placeholder="E-mail" variant="label-hidden" class="registration-input"/>
+                    <lightning:input aura:id="input2" name="Program" value="{!v.program.Name}" 
+                                     label="Program" readonly="true"/>
                 </lightning:layoutItem>
                 
                 <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input name="Program" value="{!v.program.Name}" 
-                                     label="Program" readonly="true" />
-                </lightning:layoutItem>
-                
-                <lightning:layoutItem padding="around-small" class="inputContainer" size="12">
-                    <lightning:input name="referalMember" value="{!v.member.Name}" 
-                                     label="Referal Member" readonly="true"/>            
+                    <lightning:input aura:id="input2" name="referalMember" value="{!v.member.Name}" 
+                                     label="Referral Member" readonly="true"/>            
                 </lightning:layoutItem>
                 
                 
@@ -45,7 +52,7 @@
                 
             </lightning:layoutItem>
         </lightning:layout>
-        
+        </div>
         <aura:set attribute="else">
             <div class="slds-align_absolute-center registration-successful">
                 <div class="slds-grid slds-gutters slds-grid_vertical-align-center">

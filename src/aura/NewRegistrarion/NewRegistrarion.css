@@ -1,22 +1,34 @@
 .THIS .inputContainer{
     margin-bottom: 10px;
     padding: 12px;
-    background-color: #ffffff;
+    background-color: #e0e0e0;
     border: 1px solid #ccc;
     border-radius: 2px;
+    
+}
+.THIS .inputContainer .registration-input{
+    background-color: #e0e0e0;
 }
 
+.THIS .registration-input label{
+    font-weight: bold;
+}
+
+
 .THIS .registration-input .slds-form-element__control{
-    width: 70%;
+    width: 90%;
+    
 }
 
 .THIS .registration-input .slds-input{
     margin-left: 10px;
     margin-top: 3px;
-    border: 0 solid transparent;    
+    border: 0 solid transparent;
     -webkit-appearance: none;
     min-height: initial;
+    background-color: #e0e0e0;
 }
+
 
 .THIS .registration-input.slds-has-error .slds-input{
     box-shadow: none;
@@ -76,4 +88,12 @@
 }
 .THIS .check-email{
     font-size: 0.9rem;
+}
+
+.THIS{
+    background-color:#b7b7b7;
+}
+
+.THIS.newbg{
+    background-color:#ffffff;
 }

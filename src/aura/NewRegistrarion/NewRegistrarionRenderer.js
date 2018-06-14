@@ -1,6 +1,7 @@
 ({
 	afterRender : function(cmp,helper){
         this.superAfterRender();
+<<<<<<< HEAD
 
         var bgcolor = cmp.get("v.bgcolor");
         cmp.find('body').getElements()[0].style.backgroundColor = bgcolor;
@@ -30,6 +31,13 @@
         console.log(i[0]);
         debugger;
         
+=======
+        //var elements = document.getElementsByClassName("inputContainer");
+        console.log("elements.length: " + elements.length);
+        for (var i=0; i<elements.length; i++) {
+            console.log(elements[i].innerHTML);
+        }
+>>>>>>> 09b7f88acdc16287bc0d6408fd9469154d5ccf2e
     }
     
 })
